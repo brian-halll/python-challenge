@@ -39,9 +39,29 @@ with open(resource_csv) as csvfile:
     elif DegetteVotes > DoaneVotes :
         winner = "Diana DeGette"
     else:
-         winner = "Raymon Anthony Doane"     
+         winner = "Raymon Anthony Doane"    
+
         
-            
+output_path = os.path.join("analysis", "results.csv")
+
+
+with open(output_path, 'w') as csvfile:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter=',')
+
+    # Write the first row (column headers)
+    csvwriter.writerow([f'\n\tElection Results \n\n \t-------------------- \n'])
+
+    csvwriter.writerow([f'\tTotal Votes : {totalVotes}\n\n \t-------------------- \n'])
+
+    csvwriter.writerow([f'\tCharles Casper Stockham : {(StockhamVotes/totalVotes) * 100 }% ({StockhamVotes})\n'])
+
+    csvwriter.writerow([f'\tDiana DeGette : {(DegetteVotes/totalVotes) * 100}% ({DegetteVotes})\n'])
+
+    csvwriter.writerow([f'\tRaymon Anthony Doane : {(DoaneVotes/totalVotes) * 100}% ({DoaneVotes})\n\n \t-------------------- \n'])
+
+    csvwriter.writerow([f'\tWinner : {winner}\n\n \t-------------------- \n'])            
 
 
     
