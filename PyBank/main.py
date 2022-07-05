@@ -32,15 +32,17 @@ with open(resource_csv) as csvfile:
         netTotal = netTotal + int(row[1])
 
         #calculate differences in current profit/loss from previous
-        if netChange == 0.00 :
-            netChange = int(row[1])
-        else:
-            change = (int(row[1]) - lastProfit)
-             # running sum of differences in profit/loss to calculate average
-            netChange = netChange + change
+       # if netChange == 0.00 :
+        #    netChange = int(row[1])
+           
+       # else:
+        change = (int(row[1]) - lastProfit)
+       # running sum of differences in profit/loss to calculate average
+        netChange += change
 
+       # print(f"NET CHANGE : {netChange}")
 
-
+        # keeps track of greatest increase and decrease in profit
         if change > greatestIncrease :
             greatestIncrease = change
             dateI = row[0]
@@ -52,6 +54,7 @@ with open(resource_csv) as csvfile:
        
         # keep track of profit/loss for calculating difference in next iteration
         lastProfit = int(row[1])
+       # print(f"{lastProfit}")
         
 output_path = os.path.join("analysis", "results.csv")
 
@@ -61,11 +64,11 @@ with open(output_path, 'w') as csvfile:
      # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
 
-    csvwriter.writerow([f'\tTotal Months : {totalMonths} \n \tTotal : ${netTotal} \n \tNet Change : {netChange} \n \tAverage Change : {netChange / totalMonths}'])
+    csvwriter.writerow([f'\tTotal Months : {totalMonths} \n \tTotal : ${netTotal} \n \tAverage Change : {netChange / totalMonths}'])
 
     csvwriter.writerow([f'\tGreatest Increase in Profits : {dateI} ${greatestIncrease}\n \tGreatest Decrease in Profits : {dateD} ${greatestDecrease}\n'])
 
-print(f"\tTotal Months : {totalMonths} \n \tTotal : ${netTotal} \n \tNet Change : {netChange} \n \tAverage Change : {netChange / totalMonths}")
+print(f"\tTotal Months : {totalMonths} \n \tTotal : ${netTotal} \n\tAverage Change : {netChange / totalMonths}")
 print(f"\tGreatest Increase in Profits : {dateI} ${greatestIncrease}\n \tGreatest Decrease in Profits : {dateD} ${greatestDecrease}\n") 
 
 
