@@ -32,16 +32,12 @@ with open(resource_csv) as csvfile:
         netTotal = netTotal + int(row[1])
 
         #calculate differences in current profit/loss from previous
-       # if netChange == 0.00 :
-        #    netChange = int(row[1])
-           
-       # else:
         change = (int(row[1]) - lastProfit)
+
        # running sum of differences in profit/loss to calculate average
         netChange += change
 
-       # print(f"NET CHANGE : {netChange}")
-
+        
         # keeps track of greatest increase and decrease in profit
         if change > greatestIncrease :
             greatestIncrease = change
@@ -54,22 +50,25 @@ with open(resource_csv) as csvfile:
        
         # keep track of profit/loss for calculating difference in next iteration
         lastProfit = int(row[1])
-       # print(f"{lastProfit}")
+
+       
+
         
 output_path = os.path.join("analysis", "results.csv")
 
-
+# write analysis to csv file in anlaysis/results.csv
 with open(output_path, 'w') as csvfile:
      
-     # Initialize csv.writer
+    # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
 
-    csvwriter.writerow([f'\tTotal Months : {totalMonths} \n \tTotal : ${netTotal} \n \tAverage Change : {netChange / totalMonths}'])
+    csvwriter.writerow([f'\n\tTotal Months : {totalMonths} \n \tTotal : ${netTotal: ,} \n \tAverage Change : {netChange / totalMonths : ,.2f}'])
 
-    csvwriter.writerow([f'\tGreatest Increase in Profits : {dateI} ${greatestIncrease}\n \tGreatest Decrease in Profits : {dateD} ${greatestDecrease}\n'])
+    csvwriter.writerow([f'\tGreatest Increase in Profits : {dateI} ${greatestIncrease : ,}\n \tGreatest Decrease in Profits : {dateD} ${greatestDecrease : ,}\n'])
 
-print(f"\tTotal Months : {totalMonths} \n \tTotal : ${netTotal} \n\tAverage Change : {netChange / totalMonths}")
-print(f"\tGreatest Increase in Profits : {dateI} ${greatestIncrease}\n \tGreatest Decrease in Profits : {dateD} ${greatestDecrease}\n") 
+# print analysis to terminal
+print(f"\n\tTotal Months : {totalMonths} \n \tTotal : ${netTotal : ,} \n\tAverage Change : {netChange / totalMonths: ,.2f}")
+print(f"\tGreatest Increase in Profits : {dateI} ${greatestIncrease : ,}\n \tGreatest Decrease in Profits : {dateD} ${greatestDecrease : ,}\n") 
 
 
 

@@ -53,13 +53,13 @@ with open(output_path, 'w') as csvfile:
     # Write the first row (column headers)
     csvwriter.writerow([f'\n\tElection Results \n\n \t-------------------- \n'])
 
-    csvwriter.writerow([f'\tTotal Votes : {totalVotes}\n\n \t-------------------- \n'])
+    csvwriter.writerow([f'\tTotal Votes : {totalVotes: ,}\n\n \t-------------------- \n'])
 
-    csvwriter.writerow([f'\tCharles Casper Stockham : {(StockhamVotes/totalVotes) * 100 }% ({StockhamVotes})\n'])
+    csvwriter.writerow([f'\tCharles Casper Stockham : {(StockhamVotes/totalVotes) * 100 : .2f}% ({StockhamVotes})\n'])
 
-    csvwriter.writerow([f'\tDiana DeGette : {(DegetteVotes/totalVotes) * 100}% ({DegetteVotes})\n'])
+    csvwriter.writerow([f'\tDiana DeGette : {(DegetteVotes/totalVotes) * 100: .2f}% ({DegetteVotes})\n'])
 
-    csvwriter.writerow([f'\tRaymon Anthony Doane : {(DoaneVotes/totalVotes) * 100}% ({DoaneVotes})\n\n \t-------------------- \n'])
+    csvwriter.writerow([f'\tRaymon Anthony Doane : {(DoaneVotes/totalVotes) * 100 : .2f}% ({DoaneVotes})\n\n \t-------------------- \n'])
 
     csvwriter.writerow([f'\tWinner : {winner}\n\n \t-------------------- \n'])            
 
@@ -68,10 +68,10 @@ with open(output_path, 'w') as csvfile:
 
 
 print(f"\n\tElection Results \n\n \t-------------------- \n")
-print(f"\tTotal Votes : {totalVotes}\n\n \t-------------------- \n")
-print(f"\tCharles Casper Stockham : {(StockhamVotes/totalVotes) * 100 }% ({StockhamVotes})\n")
-print(f"\tDiana DeGette : {(DegetteVotes/totalVotes) * 100}% ({DegetteVotes})\n")
-print(f"\tRaymon Anthony Doane : {(DoaneVotes/totalVotes) * 100}% ({DoaneVotes})\n\n \t-------------------- \n")
+print(f"\tTotal Votes : {totalVotes : ,}\n\n \t-------------------- \n")
+print(f"\tCharles Casper Stockham : {(StockhamVotes/totalVotes) * 100 : .2f}% ({StockhamVotes :,})\n")
+print(f"\tDiana DeGette : {(DegetteVotes/totalVotes) * 100 : .2f}% ({DegetteVotes : ,})\n")
+print(f"\tRaymon Anthony Doane : {(DoaneVotes/totalVotes) * 100 :.2f}% ({DoaneVotes : ,})\n\n \t-------------------- \n")
 
 print(f"\tWinner : {winner}\n\n \t-------------------- \n")
 
