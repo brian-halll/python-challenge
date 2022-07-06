@@ -55,11 +55,11 @@ with open(output_path, 'w') as csvfile:
 
     csvwriter.writerow([f'\tTotal Votes : {totalVotes: ,}\n\n \t-------------------- \n'])
 
-    csvwriter.writerow([f'\tCharles Casper Stockham : {(StockhamVotes/totalVotes) * 100 : .2f}% ({StockhamVotes})\n'])
+    csvwriter.writerow([f'\tCharles Casper Stockham : {(StockhamVotes/totalVotes) * 100 : .2f}% ({StockhamVotes:,})\n'])
 
-    csvwriter.writerow([f'\tDiana DeGette : {(DegetteVotes/totalVotes) * 100: .2f}% ({DegetteVotes})\n'])
+    csvwriter.writerow([f'\tDiana DeGette : {(DegetteVotes/totalVotes) * 100: .2f}% ({DegetteVotes:,})\n'])
 
-    csvwriter.writerow([f'\tRaymon Anthony Doane : {(DoaneVotes/totalVotes) * 100 : .2f}% ({DoaneVotes})\n\n \t-------------------- \n'])
+    csvwriter.writerow([f'\tRaymon Anthony Doane : {(DoaneVotes/totalVotes) * 100 : .2f}% ({DoaneVotes:,})\n\n \t-------------------- \n'])
 
     csvwriter.writerow([f'\tWinner : {winner}\n\n \t-------------------- \n'])            
 
